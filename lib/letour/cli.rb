@@ -1,0 +1,3 @@
+class LeTour::CLI
+
+end
