@@ -1,3 +1,3 @@
 class LeTour::Scraper
 
-end
+end 
