@@ -17,4 +17,5 @@ class LeTour::Stages
     @@all
   end
 
+
 end

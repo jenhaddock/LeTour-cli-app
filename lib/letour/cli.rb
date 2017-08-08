@@ -1,6 +1,7 @@
 class LeTour::CLI
 
   def call
+    LeTour::Scraper.scrape_page
     menu
   end
 
