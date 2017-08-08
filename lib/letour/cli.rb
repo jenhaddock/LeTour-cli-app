@@ -20,15 +20,19 @@ class LeTour::CLI
 
     case input
       when "1"
-
+        print_summary
       when "2"
-
+        puts "Which time trial would you like more info on?"
+        print_summary(time_trial)
       when "3"
-
+        puts "Which flat stage would you like more info on?"
+        print_summary(flat)
       when "4"
-
+        puts "Which hilly stage would you like more info on?"
+        print_summary(hilly)
       when "5"
-
+        puts "Which mountain stage would you like more info on?"
+        print_summary(mountain)
       when "6"
         puts "See you at the 2018 Tour de France!"
         exit
@@ -36,5 +40,9 @@ class LeTour::CLI
         menu
       end
   end
+
+  def print_summary(type=nil)
+
+ end
 
 end
