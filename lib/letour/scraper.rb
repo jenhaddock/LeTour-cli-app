@@ -5,7 +5,7 @@ class LeTour::Scraper
     children = doc.css('tbody tr')
 
     children.each do |stage|
-      LeTour::Stages.new_from_site(stage)
+      LeTour::Stage.new_from_site(stage)
     end
   end
 end

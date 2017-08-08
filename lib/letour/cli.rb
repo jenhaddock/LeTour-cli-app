@@ -40,7 +40,7 @@ class LeTour::CLI
   def print_summary(t=nil)
     puts "Which #{t} would you like more info on? (Type exit to leave or menu to return)"
 
-    LeTour::Stages.all.each {|s|
+    LeTour::Stage.all.each {|s|
       if t == nil || t == s.type.downcase
         puts "#{s.stage}. #{s.date}"
       end
@@ -75,7 +75,7 @@ class LeTour::CLI
       menu
     end
 
-    s = LeTour::Stages.find(input.to_i)
+    s = LeTour::Stage.find(input.to_i)
 
     puts " "
     puts "Stage: #{s.stage}"
