@@ -22,7 +22,7 @@ RSpec.describe LeTour::Stage do
 
     describe '.find' do
       it 'returns the stage based on position in @@all' do
-        expect(LeTour::Stage.find(1)).to eq(:stages[0])
+        expect(LeTour::Stage.all[1]).to eq(LeTour::Stage.find(1))
       end
     end
 end
