@@ -22,17 +22,13 @@ class LeTour::CLI
       when "1"
         print_summary
       when "2"
-        puts "Which time trial would you like more info on?"
-        print_summary(time_trial)
+        print_summary('individual time trial')
       when "3"
-        puts "Which flat stage would you like more info on?"
-        print_summary(flat)
+        print_summary('flat')
       when "4"
-        puts "Which hilly stage would you like more info on?"
-        print_summary(hilly)
+        print_summary('hilly')
       when "5"
-        puts "Which mountain stage would you like more info on?"
-        print_summary(mountain)
+        print_summary('mountain')
       when "6"
         puts "See you at the 2018 Tour de France!"
         exit
@@ -42,7 +38,27 @@ class LeTour::CLI
   end
 
   def print_summary(type=nil)
+    puts "Which #{type} would you like more info on? (Type exit to leave or menu to return)"
 
- end
+    input = gets.strip
+
+    if input.downcase == "exit"
+      exit
+    else
+      if input.downcase == "menu"
+        menu
+      else
+        if input.to_i == 0
+          print_summary(type)
+        end
+      end
+    end
+
+    LeTour::Stages.all do |s|
+      if type = spaces || type = s.type.downcase
+         puts "#{s.stage}. #{s.type} #{s.date} #{s.start} - #{s.finish} #{s.distance}"
+      end
+    end
+  end
 
 end
