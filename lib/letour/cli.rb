@@ -40,12 +40,11 @@ class LeTour::CLI
   def print_summary(t=nil)
     puts "Which #{t} would you like more info on? (Type exit to leave or menu to return)"
 
-    LeTour::Stages.all.each do |s|
-      if t = nil || t = s.type.downcase
-        binding.pry
+    LeTour::Stages.all.each {|s|
+      if t == nil || t == s.type.downcase
         puts "#{s.stage}. #{s.date}"
       end
-    end
+    }
 
     input = gets.strip
 
@@ -54,7 +53,7 @@ class LeTour::CLI
     elsif input.downcase == "menu"
         menu
       elsif input.to_i == 0
-          print_summary(type)
+          print_summary(t)
         else
           print_detail(input)
     end
