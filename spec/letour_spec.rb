@@ -22,13 +22,20 @@ RSpec.describe LeTour::Stage do
 
     describe '.find' do
       it 'returns the stage based on position in @@all' do
-        expect(LeTour::Stage.find(1)).to eq(stages[0])
+        expect(LeTour::Stage.find(1)).to eq(:stages[0])
       end
     end
 end
 
   context 'Instance Methods' do
-    subject{LeTour::Stage.new("22", "Undulating", "Monday, July 24th", "Paris", "Berlin", "0km", "http://www.letour.com/le-tour/2017/us/stage-22.html")}
+    stage_info = {:stage => "22",
+                  :type => "Undulating",
+                  :date => "Monday, July 24th",
+                  :start => "Paris",
+                  :finish => "Berlin",
+                  :distance => "0km",
+                  :details => "http://www.letour.com/le-tour/2017/us/stage-22.html"}
+    subject{LeTour::Stage.new(stage_info)}
 
     describe '#stage' do
       it 'has a stage' do
@@ -62,7 +69,7 @@ end
 
     describe '#distance' do
       it 'has a distance' do
-        expect(subject.start).to eq("0km")
+        expect(subject.distance).to eq("0km")
       end
     end
 
