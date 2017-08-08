@@ -3,7 +3,7 @@ class LeTour::Stages
 
   @@all = []
 
-  def intialize(:stage, :type, :start, :finish, :distance, :date, :details)
+  def intialize(stage:, type:, start:, finish:, distance:, date:, details:)
     @stage = stage
     @type = type
     @start = start
