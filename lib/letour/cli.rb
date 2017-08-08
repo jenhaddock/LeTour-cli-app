@@ -60,7 +60,7 @@ class LeTour::CLI
 
     puts "Would you like to see more stages? (Y/N)"
     input = gets.strip.downcase
-    if input = "y"
+    if input == "y"
       menu
     else
       exit
@@ -68,7 +68,7 @@ class LeTour::CLI
   end
 
   def print_detail(stage)
-    input = stage - 1
+    input = stage.to_i - 1
 
     s = LeTour::Stages.find(input.to_i)
 

@@ -8,5 +8,4 @@ class LeTour::Scraper
       LeTour::Stages.new_from_site(stage)
     end
   end
-
 end

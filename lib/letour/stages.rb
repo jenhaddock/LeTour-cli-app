@@ -26,4 +26,7 @@ class LeTour::Stages
     end
   end
 
+  def self.find(i)
+   self.all[i.to_i]
+  end
 end
