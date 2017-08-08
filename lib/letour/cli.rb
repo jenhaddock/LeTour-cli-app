@@ -6,8 +6,8 @@ class LeTour::CLI
   end
 
   def menu
-    puts "Welcome to the 2017 Tour de France"
-    puts "----------------------------------"
+    puts "      Welcome to the 2017 Tour de France"
+    puts "-----------------------------------------------"
     puts "Which type of stages would you like to see?"
     puts "1. All Stages"
     puts "2. Time Trial Stages"
@@ -40,25 +40,44 @@ class LeTour::CLI
   def print_summary(type=nil)
     puts "Which #{type} would you like more info on? (Type exit to leave or menu to return)"
 
+    LeTour::Stages.all do |s|
+      if type = spaces || type = s.type.downcase
+        puts "#{s.stage}. #{s.date}"
+      end
+    end
+
     input = gets.strip
 
     if input.downcase == "exit"
       exit
-    else
-      if input.downcase == "menu"
+    elsif input.downcase == "menu"
         menu
-      else
-        if input.to_i == 0
+      elsif input.to_i == 0
           print_summary(type)
-        end
-      end
+        else
+          print_detail(input)
     end
 
-    LeTour::Stages.all do |s|
-      if type = spaces || type = s.type.downcase
-         puts "#{s.stage}. #{s.type} #{s.date} #{s.start} - #{s.finish} #{s.distance}"
-      end
+    puts "Would you like to see more stages? (Y/N)"
+    input = gets.strip.downcase
+    if input = "y"
+      menu
+    else
+      exit
     end
   end
 
+  def print_detail(stage)
+    input = stage - 1
+
+    s = LeTour::Stages.find(input.to_i)
+
+    puts "Stage: #{s.stage}"
+    puts "Type: #{s.type}"
+    puts "Date: #{s.date}"
+    puts "Start Town: #{s.start}"
+    puts "Finish Town: #{s.finish}"
+    puts "Distance: #{s.distance}"
+    puts "Details: #{s.details}"
+  end
 end
