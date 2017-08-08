@@ -37,11 +37,12 @@ class LeTour::CLI
       end
   end
 
-  def print_summary(type=nil)
-    puts "Which #{type} would you like more info on? (Type exit to leave or menu to return)"
+  def print_summary(t=nil)
+    puts "Which #{t} would you like more info on? (Type exit to leave or menu to return)"
 
-    LeTour::Stages.all do |s|
-      if type = spaces || type = s.type.downcase
+    LeTour::Stages.all.each do |s|
+      if t = nil || t = s.type.downcase
+        binding.pry
         puts "#{s.stage}. #{s.date}"
       end
     end
@@ -70,8 +71,14 @@ class LeTour::CLI
   def print_detail(stage)
     input = stage.to_i - 1
 
+    if input > 21
+      puts "We only have 21 stages"
+      menu
+    end
+
     s = LeTour::Stages.find(input.to_i)
 
+    puts " "
     puts "Stage: #{s.stage}"
     puts "Type: #{s.type}"
     puts "Date: #{s.date}"
@@ -79,5 +86,6 @@ class LeTour::CLI
     puts "Finish Town: #{s.finish}"
     puts "Distance: #{s.distance}"
     puts "Details: #{s.details}"
+    puts " "
   end
 end
