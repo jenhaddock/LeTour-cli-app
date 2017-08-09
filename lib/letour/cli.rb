@@ -38,7 +38,8 @@ class LeTour::CLI
   end
 
   def print_summary(t=nil)
-    puts "Which #{t} would you like more info on? (Type exit to leave or menu to return)"
+    puts " "
+    puts "Which #{t} stage would you like more info on? (Type exit to leave or menu to return)"
 
     LeTour::Stage.all.each {|s|
       if t == nil || t == s.type.downcase
